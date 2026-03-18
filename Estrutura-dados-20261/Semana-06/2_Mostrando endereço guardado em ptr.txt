@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main()
+{
+  
+int var = 10;
+int *ptr = &var;
+int value = *ptr; // value agora é 10
+
+printf("Valor armazenado em ptr: %p\n", ptr);
+return 0;
+
+}
