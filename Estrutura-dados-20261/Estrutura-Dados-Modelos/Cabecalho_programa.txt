@@ -1,0 +1,9 @@
+/*----------------------------------------------------------------------------------*/
+/*                                FATEC-Ipiranga                                    */        
+/*                            ADS - Estrutura de Dados                              */
+/*                             Id da Atividade: xxxxxxxxxxxxxx                      */
+/*             Objetivo: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx      */
+/*                                                                                  */
+/*                                  Autor: xxxxxxxxxxxxxxxxxxxx                     */
+/*                                                                   Data:dd/mm/2026*/
+/*----------------------------------------------------------------------------------*/
