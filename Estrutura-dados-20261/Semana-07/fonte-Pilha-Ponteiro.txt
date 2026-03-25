@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estrutura do nó da pilha
+typedef struct No {
+    int dado;
+    struct No *proximo;
+} No;
+
+// 1. Inicializar a pilha (retorna um ponteiro nulo)
+No* criarPilha() {
+    return NULL;
+}
+
+// 2. Verificar se está vazia
+int isEmpty(No *topo) {
+    return (topo == NULL);
+}
+
+// 3. Empilhar (Push)
+void push(No **topo, int valor) {
+    No *novo = (No*) malloc(sizeof(No));
+    if (novo == NULL) {
+        printf("Erro: Falha na alocação de memória!\n");
+        return;
+    }
+    novo->dado = valor;
+    novo->proximo = *topo;
+    *topo = novo;
+    printf("%d empilhado com sucesso.\n", valor);
+}
+
+// 4. Desempilhar (Pop)
+int pop(No **topo) {
+    if (isEmpty(*topo)) {
+        printf("Erro: Pilha vazia!\n");
+        return -1; 
+    }
+    No *aux = *topo;
+    int valor = aux->dado;
+    *topo = aux->proximo;
+    free(aux);
+    return valor;
+}
+
+// 5. Espiar o Topo (Peek/Top)
+int peek(No *topo) {
+    if (isEmpty(topo)) {
+        printf("Pilha vazia.\n");
+        return -1;
+    }
+    return topo->dado;
+}
+
+// 6. Exibir a pilha
+void imprimirPilha(No *topo) {
+    printf("\n--- Pilha Atual ---\n");
+    while (topo != NULL) {
+        printf("[%d]\n", topo->dado);
+        topo = topo->proximo;
+    }
+    printf("-------------------\n");
+}
+
+// 7. Limpar toda a pilha (Liberar memória)
+void limparPilha(No **topo) {
+    while (!isEmpty(*topo)) {
+        pop(topo);
+    }
+    printf("Memoria da pilha liberada.\n");
+}
+
+int main() {
+    No *pilha = criarPilha();
+
+    // Testando as funções
+    push(&pilha, 10);
+    push(&pilha, 20);
+    push(&pilha, 30);
+    
+    imprimirPilha(pilha);
+
+    printf("Topo atual: %d\n", peek(pilha));
+
+    printf("Removendo: %d\n", pop(&pilha));
+    
+    imprimirPilha(pilha);
+
+    limparPilha(&pilha);
+
+    return 0;
+}

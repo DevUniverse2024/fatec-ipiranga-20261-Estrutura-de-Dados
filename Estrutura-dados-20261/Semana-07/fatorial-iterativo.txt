@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main() {
+    int n = 5;
+    int resultado = 1;
+
+    for (int i = 1; i <= n; i++) {
+        resultado *= i;
+    }
+
+    printf("O fatorial de %d é %d\n", n, resultado);
+    return 0;
+}

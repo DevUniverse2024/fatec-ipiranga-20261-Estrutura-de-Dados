@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+void fibonacci_recursivo(int n, int a, int b) {
+    if (n > 0) {
+        printf("%d ", a);
+        fibonacci_recursivo(n - 1, b, a + b);
+    }
+}
+
+int main() {
+    int termos = 10;
+    printf("Os primeiros %d termos da sequência de Fibonacci são: ", termos);
+    fibonacci_recursivo(termos, 0, 1);
+    printf("\n");
+    return 0;
+}

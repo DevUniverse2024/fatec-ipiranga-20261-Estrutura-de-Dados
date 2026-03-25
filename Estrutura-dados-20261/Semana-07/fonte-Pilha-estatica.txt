@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define TAM_MAX 10 // Define o tamanho máximo da pilha
+
+// Estrutura da Pilha Estática
+typedef struct {
+    int itens[TAM_MAX];
+    int topo;
+} Pilha;
+
+// 1. Inicializar a pilha
+void inicializar(Pilha *p) {
+    p->topo = -1; // -1 indica que a pilha está vazia
+}
+
+// 2. Verificar se está cheia (Overflow)
+int isFull(Pilha *p) {
+    return p->topo == TAM_MAX - 1;
+}
+
+// 3. Verificar se está vazia (Underflow)
+int isEmpty(Pilha *p) {
+    return p->topo == -1;
+}
+
+// 4. Empilhar (Push) - Usando top++
+void push(Pilha *p, int valor) {
+    if (isFull(p)) {
+        printf("Erro: A pilha esta cheia (Overflow)!\n");
+    } else {
+        p->topo++;          // Incrementa o índice do topo
+        p->itens[p->topo] = valor; // Insere o valor na nova posição
+        printf("%d empilhado.\n", valor);
+    }
+}
+
+// 5. Desempilhar (Pop) - Usando top--
+int pop(Pilha *p) {
+    if (isEmpty(p)) {
+        printf("Erro: A pilha esta vazia (Underflow)!\n");
+        return -1;
+    } else {
+        int valor = p->itens[p->topo];
+        p->topo--; // Apenas decrementa o índice (o valor "sai" da pilha)
+        return valor;
+    }
+}
+
+// 6. Espiar o Topo (Peek)
+int peek(Pilha *p) {
+    if (isEmpty(p)) {
+        return -1;
+    }
+    return p->itens[p->topo];
+}
+
+// 7. Exibir a pilha
+void imprimirPilha(Pilha *p) {
+    if (isEmpty(p)) {
+        printf("Pilha vazia.\n");
+        return;
+    }
+    printf("\n--- Pilha Atual (Topo no topo) ---\n");
+    for (int i = p->topo; i >= 0; i--) {
+        printf("[%d]\n", p->itens[i]);
+    }
+    printf("----------------------------------\n");
+}
+
+int main() {
+    Pilha minhaPilha;
+    inicializar(&minhaPilha);
+
+    push(&minhaPilha, 10);
+    push(&minhaPilha, 20);
+    push(&minhaPilha, 30);
+
+    imprimirPilha(&minhaPilha);
+
+    printf("Elemento no topo: %d\n", peek(&minhaPilha));
+
+    printf("Desempilhando: %d\n", pop(&minhaPilha));
+    printf("Desempilhando: %d\n", pop(&minhaPilha));
+
+    imprimirPilha(&minhaPilha);
+
+    return 0;
+}
