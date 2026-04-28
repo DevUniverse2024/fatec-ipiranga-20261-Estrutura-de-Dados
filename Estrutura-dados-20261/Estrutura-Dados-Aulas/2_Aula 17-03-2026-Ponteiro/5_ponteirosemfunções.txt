@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+void increment(int *num) {
+    (*num)++;
+}
+
+int main() {
+    int var = 10;
+    printf("Antes da função: %d\n", var);
+    increment(&var);
+    printf("Depois da função: %d\n", var);
+
+    return 0;
+}
